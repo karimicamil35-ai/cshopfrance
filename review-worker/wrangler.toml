@@ -1,0 +1,11 @@
+name = "cshopfrance-review-reminder"
+main = "worker.js"
+compatibility_date = "2026-08-03"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cshopfrance-orders"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
