@@ -1,0 +1,8 @@
+{
+  "name": "cshopfrance",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "check": "node --check public/app.js && node --check functions/api/auth/google.js && node --check functions/api/auth/google/callback.js && node --check functions/api/orders/index.js && node --check functions/api/admin/orders.js"
+  }
+}
