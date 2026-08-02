@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "npx wrangler pages functions build --outdir=.worker",
+    "build": "npx wrangler pages functions build functions --outdir=.worker",
     "check": "node --check public/app.js && node --check functions/api/auth/google.js && node --check functions/api/auth/google/callback.js && node --check functions/api/orders/index.js && node --check functions/api/admin/orders.js"
   }
 }
