@@ -4,5 +4,5 @@ pages_build_output_dir = "public"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "cshopfrance-orders"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_name = "cshopfrance-commandes"
+database_id = "b1b09492-0f27-4deb-9d5b-ceb92288a9b5"
