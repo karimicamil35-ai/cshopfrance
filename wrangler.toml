@@ -1,6 +1,10 @@
 name = "cshopfrance"
 compatibility_date = "2026-08-03"
-pages_build_output_dir = "public"
+main = ".worker/index.js"
+
+[assets]
+directory = "public"
+run_worker_first = ["/api/*"]
 
 [[d1_databases]]
 binding = "DB"
