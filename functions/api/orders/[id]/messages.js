@@ -3,8 +3,8 @@ import {json,requireUser} from '../../../_lib.js';
 async function orderForUser(request,env,id){
   const user=await requireUser(request,env);
   const order=user.admin
-    ? await env.DB.prepare('SELECT id, customer_email FROM orders WHERE id=?').bind(id).first()
-    : await env.DB.prepare('SELECT id, customer_email FROM orders WHERE id=? AND customer_email=?').bind(id,user.email).first();
+    ? await env.DB.prepare("SELECT id, customer_email FROM orders WHERE id=? AND status != 'archived'").bind(id).first()
+    : await env.DB.prepare("SELECT id, customer_email FROM orders WHERE id=? AND customer_email=? AND status != 'archived'").bind(id,user.email).first();
   if(!order)throw new Error('NOT_FOUND');
   return {user,order};
 }

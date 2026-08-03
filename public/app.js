@@ -42,16 +42,6 @@ function refreshArticleLabels() {
     if (remove) remove.hidden = index === 0;
   });
 }
-$('#addArticle').onclick = () => {
-  const articles = $('#articles');
-  const copy = articles.querySelector('[data-article]').cloneNode(true);
-  copy.querySelectorAll('input, textarea').forEach(field => { field.value = ''; });
-  const oldRemove = copy.querySelector('.removeArticle');
-  if (oldRemove) oldRemove.remove();
-  const remove = document.createElement('button');
-  remove.type = 'button'; remove.className = 'removeArticle'; remove.textContent = 'Retirer cet article';
-  copy.append(remove); articles.append(copy); refreshArticleLabels();
-};
 document.addEventListener('click', event => {
   const remove = event.target.closest('.removeArticle');
   if (!remove) return;
@@ -64,19 +54,18 @@ $('#requestForm').onsubmit = async event => {
   if (!form.reportValidity()) return;
   if (!currentUser) { $('#formMessage').textContent = 'Connecte-toi avec Google avant d’envoyer ta demande.'; return connect(); }
   const customer = Object.fromEntries(new FormData(form));
-  const articles = [...form.querySelectorAll('[data-article]')].map(article => ({
+  const article = form.querySelector('[data-article]');
+  const order = {
     product: article.querySelector('[name="product"]').value,
     size: article.querySelector('[name="size"]').value,
     budget: article.querySelector('[name="budget"]').value,
     details: article.querySelector('[name="details"]').value
-  }));
+  };
   try {
-    const results = await Promise.all(articles.map(article => api('/api/orders', {
-      method: 'POST', body: JSON.stringify({ ...customer, ...article })
-    })));
-    $('#formMessage').textContent = results.length === 1
-      ? `Demande n°${results[0].id} envoyée. Elle est maintenant visible dans « Mes commandes ».`
-      : `${results.length} articles ont été ajoutés à ta demande. Ils sont maintenant visibles dans « Mes commandes ».`;
+    const result = await api('/api/orders', {
+      method: 'POST', body: JSON.stringify({ ...customer, ...order })
+    });
+    $('#formMessage').textContent = `Demande n°${result.id} envoyée. Elle est maintenant visible dans « Mes commandes ».`;
     form.reset();
     const extraArticles = [...form.querySelectorAll('[data-article]')].slice(1);
     extraArticles.forEach(article => article.remove());

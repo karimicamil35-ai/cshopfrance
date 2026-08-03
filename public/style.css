@@ -55,8 +55,6 @@ input.file{font-size:9px;padding:8px}
 .articleItem{margin:0;padding:0 0 15px;border:0;border-bottom:1px solid #282b28}
 .articleItem:last-child{padding-bottom:0;border-bottom:0}
 .articleItem legend{padding:0;color:#ff7b3b;font:700 8px 'DM Mono';letter-spacing:1px}
-.addArticle{width:100%;margin-top:14px;padding:11px;border:1px solid #4b2513;background:#15100d;color:var(--orange);font:800 10px Manrope;cursor:pointer}
-.removeArticle{margin-top:11px;border:0;background:transparent;color:#aaa;font:700 9px Manrope;cursor:pointer;text-decoration:underline}
 .send{border:0;width:100%;margin-top:14px;padding:13px;background:var(--orange);color:#101010;font:800 10px Manrope;cursor:pointer}
 .send span{margin-left:15px}
 .legal,.message{font-size:8px;line-height:1.4;color:#777a77}
@@ -84,6 +82,8 @@ input.file{font-size:9px;padding:8px}
 .adminControls .closeOrderButton:hover{filter:brightness(1.12);transform:translateY(-1px)}
 .adminChat{grid-column:1/-1;border-top:1px solid #2a2d2a;padding-top:2px}
 .chatToggle{margin-top:15px;border:1px solid #4b2513;background:#15100d;color:var(--orange);padding:10px 12px;font:800 10px Manrope;cursor:pointer}
+.reviewButton{margin-top:14px;border:0;background:var(--orange);color:#151515;padding:12px 15px;font:800 10px Manrope;cursor:pointer;transition:filter .16s ease,transform .16s ease}
+.reviewButton:hover,.chatToggle:hover{filter:brightness(1.12);transform:translateY(-1px)}
 .chat{margin-top:15px;border-top:1px solid #2a2d2a;padding-top:14px}
 .chatMessages{display:grid;gap:8px;max-height:280px;overflow:auto;padding-right:3px}
 .chatMessage{max-width:min(85%,560px);padding:10px 12px;background:#171a18;color:#d8d9d6;font-size:11px;line-height:1.5}
