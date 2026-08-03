@@ -17,3 +17,15 @@ CREATE TABLE IF NOT EXISTS orders (
   review_comment TEXT,
   reviewed_at TEXT
 );
+
+CREATE TABLE IF NOT EXISTS order_messages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  order_id INTEGER NOT NULL,
+  author_email TEXT NOT NULL,
+  author_role TEXT NOT NULL CHECK (author_role IN ('customer', 'admin')),
+  message TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (order_id) REFERENCES orders(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_order_messages_order_id ON order_messages(order_id, id);
