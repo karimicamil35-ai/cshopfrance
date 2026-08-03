@@ -10,81 +10,49 @@
 </head>
 <body>
   <header class="header">
-    <a class="logo" href="#accueil" aria-label="C SHOP.FR, accueil"><span>C</span><b>SHOP</b><i>.FR</i></a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#accueil">Accueil</a>
-      <a href="#how">Comment ça marche</a>
-      <a href="#faq">FAQ</a>
-      <a href="#demande">Faire une demande</a>
-      <button id="ordersButton" type="button">Mes commandes</button>
-    </nav>
+    <button id="menuButton" class="menuButton" type="button" aria-label="Ouvrir le menu" aria-controls="sideMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="logo" href="#accueil" data-page-link="accueil" aria-label="C SHOP.FR, accueil"><span>C</span><b>SHOP</b><i>.FR</i></a>
     <button id="loginButton" class="login" type="button">Se connecter avec Google</button>
   </header>
 
-  <main id="accueil">
-    <section class="hero">
-      <div class="heroCopy">
-        <p class="eyebrow">PERSONAL SHOPPING · FRANCE</p>
-        <h1>Trouve ce que<br><strong>tu veux.</strong></h1>
-        <p>Tu cherches un produit précis ? Envoie ta demande, nous le trouvons et tu suis chaque étape depuis ton espace personnel.</p>
-        <div class="actions"><a class="button orange" href="#demande">Faire une demande <span>↗</span></a><a class="button dark" href="#suivi">Voir le suivi</a></div>
-        <ul class="benefits"><li>Demande rapide</li><li>Suivi clair</li><li>Réponse personnalisée</li></ul>
-      </div>
+  <div id="menuOverlay" class="menuOverlay hidden"></div>
+  <aside id="sideMenu" class="sideMenu" aria-label="Menu de navigation" aria-hidden="true">
+    <div class="sideMenuTop"><p>MENU DE NAVIGATION</p><button id="closeMenu" type="button" aria-label="Fermer le menu">×</button></div>
+    <nav class="sideNav">
+      <a href="#accueil" data-page-link="accueil"><span>⌂</span> Accueil</a>
+      <a href="#comment-ca-marche" data-page-link="comment-ca-marche"><span>↗</span> Comment ça marche</a>
+      <a href="#faq" data-page-link="faq"><span>?</span> FAQ</a>
+      <a href="#discord" data-page-link="discord"><span>◈</span> Discord</a>
+      <a href="#contact" data-page-link="contact"><span>✉</span> Contact</a>
+      <a href="#mentions-legales" data-page-link="mentions-legales"><span>§</span> Mentions légales</a>
+      <a href="#confidentialite" data-page-link="confidentialite"><span>⌁</span> Politique de confidentialité</a>
+    </nav>
+    <div class="sideMenuDivider"></div>
+    <nav class="sideNav sideNavActions">
+      <button id="requestMenuButton" type="button"><span>＋</span> Faire une demande</button>
+      <button id="ordersButton" type="button"><span>□</span> Mes commandes</button>
+      <button id="adminMenuButton" type="button" class="hidden"><span>⚙</span> Administration</button>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="accueil" class="page hero pageActive">
+      <div class="heroCopy"><p class="eyebrow">PERSONAL SHOPPING · FRANCE</p><h1>Trouve ce que<br><strong>tu veux.</strong></h1><p>Tu cherches un produit précis ? Envoie ta demande, nous le trouvons et tu suis chaque étape depuis ton espace personnel.</p><div class="actions"><button class="button orange" data-open-request type="button">Faire une demande <span>↗</span></button><button class="button dark" data-open-orders type="button">Voir le suivi</button></div><ul class="benefits"><li>Demande rapide</li><li>Suivi clair</li><li>Réponse personnalisée</li></ul></div>
       <div class="visual" aria-hidden="true"><div class="orbit orbitA"></div><div class="orbit orbitB"></div><div class="monogram">C</div><div class="tag tagTop">SNEAKERS<br><b>trouvées</b></div><div class="tag tagBottom">SUIVI<br><b>en direct</b></div></div>
     </section>
 
-    <section id="comment-ca-marche" class="how">
-      <div><p class="eyebrow">SIMPLE ET RAPIDE</p><h2>Comment ça marche ?</h2></div>
-      <ol>
-        <li><span>01</span><b>Tu demandes</b><p>Tu décris simplement l’article que tu recherches.</p></li>
-        <li><span>02</span><b>On cherche</b><p>Nous cherchons l’offre qui correspond à ta demande.</p></li>
-        <li><span>03</span><b>Tu reçois une proposition</b><p>Tu suis l’avancement depuis ton espace personnel.</p></li>
-      </ol>
-    </section>
+    <section id="comment-ca-marche" class="page how"><div><p class="eyebrow">SIMPLE ET RAPIDE</p><h2>Comment ça marche ?</h2></div><ol><li><span>01</span><b>Tu demandes</b><p>Tu décris simplement l’article que tu recherches.</p></li><li><span>02</span><b>On cherche</b><p>Nous cherchons l’offre qui correspond à ta demande.</p></li><li><span>03</span><b>Tu reçois une proposition</b><p>Tu suis l’avancement depuis ton espace personnel.</p></li></ol></section>
+    <section id="faq" class="page infoSection"><p class="eyebrow">BESOIN D’UNE RÉPONSE ?</p><h2>FAQ</h2><details><summary>Comment envoyer une demande ?</summary><p>Clique sur « Faire une demande », connecte-toi avec Google, puis remplis le formulaire.</p></details><details><summary>Où suivre ma demande ?</summary><p>Après connexion, clique sur « Mes commandes » dans le menu.</p></details><details><summary>Mes données sont-elles publiques ?</summary><p>Non. Elles servent uniquement à répondre à ta demande et à son suivi.</p></details></section>
+    <section id="discord" class="page infoSection discord"><p class="eyebrow">COMMUNAUTÉ C SHOP</p><h2>Discord</h2><p>Rejoins la communauté C SHOP.FR pour poser tes questions et suivre les actualités.</p><a class="button orange discordLink" href="https://discord.gg/rR7a9wdtNg" target="_blank" rel="noopener noreferrer">Rejoindre Discord ↗</a></section>
+    <section id="contact" class="page infoSection"><p class="eyebrow">BESOIN D’AIDE ?</p><h2>Contact</h2><p>Pour toute question concernant une demande, contacte-nous sur notre serveur Discord.</p><a class="button orange discordLink" href="https://discord.gg/rR7a9wdtNg" target="_blank" rel="noopener noreferrer">Rejoindre Discord ↗</a></section>
+    <section id="mentions-legales" class="page infoSection"><p class="eyebrow">INFORMATIONS</p><h2>Mentions légales</h2><p>Les mentions légales complètes seront ajoutées avec le nom de l’éditeur, l’adresse de contact et l’hébergeur avant l’ouverture au public.</p></section>
+    <section id="confidentialite" class="page infoSection"><p class="eyebrow">TES DONNÉES</p><h2>Politique de confidentialité</h2><p>C SHOP.FR utilise tes coordonnées uniquement pour traiter ta demande, te contacter et te permettre de suivre son avancement. Aucune donnée n’est revendue.</p></section>
 
-    <section id="faq" class="infoSection"><h2>FAQ</h2><details><summary>Comment envoyer une demande ?</summary><p>Clique sur « Faire une demande », connecte-toi avec Google, puis remplis le formulaire.</p></details><details><summary>Où suivre ma demande ?</summary><p>Après connexion, clique sur « Mes commandes » en haut du site.</p></details><details><summary>Mes données sont-elles publiques ?</summary><p>Non. Elles servent uniquement à répondre à ta demande et à son suivi.</p></details></section>
-
-    <section id="demande" class="request">
-      <div class="requestIntro">
-        <p class="eyebrow">TA PROCHAINE TROUVAILLE</p>
-        <h2>Fais ta demande.</h2>
-        <p>Réponse rapide dans ton espace C‑Shop. Tes coordonnées restent privées.</p>
-      </div>
-      <form id="requestForm" novalidate>
-        <section class="formPart"><div class="partTitle"><span>01</span><div><b>Tes coordonnées</b><small>Elles restent privées et servent uniquement à te recontacter.</small></div></div>
-          <div class="grid two"><label>PRÉNOM<input name="firstName" required placeholder="Ex. Alex" autocomplete="given-name"></label><label>NOM<input name="lastName" required placeholder="Ex. Martin" autocomplete="family-name"></label></div>
-          <div class="grid two"><label>NUMÉRO DE TÉLÉPHONE<input name="phone" required type="tel" placeholder="Ex. 06 12 34 56 78" autocomplete="tel"></label><label>E‑MAIL<input name="email" required type="email" placeholder="Ex. alex@email.fr" autocomplete="email"></label></div>
-          <div class="grid"><label>VILLE<input name="city" required placeholder="Ex. Rennes" autocomplete="address-level2"></label></div>
-        </section>
-        <section class="formPart"><div class="partTitle"><span>02</span><div><b>L’article recherché</b><small>Une seule commande peut être ouverte à la fois par compte.</small></div></div>
-          <div id="articles" class="articles">
-            <fieldset class="articleItem" data-article>
-              <legend>ARTICLE 1</legend>
-              <div class="grid"><label>ARTICLE RECHERCHÉ<input name="product" required placeholder="Ex. Nike Air Max 95"></label></div>
-              <div class="grid two"><label>TAILLE / MODÈLE<input name="size" placeholder="Ex. 42"></label><label>BUDGET MAXIMUM<input name="budget" inputmode="decimal" placeholder="Ex. 180 €"></label></div>
-              <div class="grid"><label>PHOTOS DE L’ARTICLE <small>(jusqu’à 4)</small><input class="file" name="photos" type="file" accept="image/*" multiple></label></div>
-              <div class="grid"><label>LIEN OU DÉTAIL COMPLÉMENTAIRE<textarea name="details" rows="3" placeholder="Couleur, état souhaité, lien vers l’article…"></textarea></label></div>
-            </fieldset>
-          </div>
-          <button class="addArticle" id="addArticle" type="button">+ Ajouter un article</button>
-        </section>
-        <button class="send" type="submit">Envoyer ma demande <span>↗</span></button><p id="formMessage" class="message" aria-live="polite"></p>
-        <p class="legal">Pour envoyer ta demande, clique sur « Se connecter avec Google » en haut à droite. Cela te permet aussi de retrouver tes commandes. Tes coordonnées restent privées.</p>
-      </form>
-    </section>
-
-    <section id="discord" class="infoSection discord"><p class="eyebrow">COMMUNAUTÉ C SHOP</p><h2>Discord</h2><p>Rejoins la communauté C SHOP.FR pour poser tes questions et suivre les actualités.</p><a class="button orange discordLink" href="https://discord.gg/rR7a9wdtNg" target="_blank" rel="noopener noreferrer">Rejoindre Discord ↗</a></section>
-    <section id="contact" class="infoSection"><p class="eyebrow">BESOIN D’AIDE ?</p><h2>Contact</h2><p>Pour toute question concernant une demande, contacte-nous sur notre serveur Discord.</p><a class="button orange discordLink" href="https://discord.gg/rR7a9wdtNg" target="_blank" rel="noopener noreferrer">Rejoindre Discord ↗</a></section>
-
-    <section id="suivi" class="workspace hidden"><button class="close" id="closeOrders" type="button" aria-label="Fermer">×</button><p class="eyebrow">ESPACE CLIENT</p><h2>Mes commandes</h2><p id="accountLine" class="accountLine"></p><p class="workspaceIntro">Suis tes demandes et échange avec C SHOP.FR ici. Ton numéro reste privé.</p><div id="ordersContent"></div></section>
-    <section id="administration" class="workspace admin hidden"><button class="close" id="closeAdmin" type="button" aria-label="Fermer">×</button><p class="eyebrow">ESPACE PRIVÉ</p><h2>Administration</h2><p class="accountLine">Gestion des demandes reçues et de leur avancement.</p><div id="adminContent"></div></section>
+    <section id="demande" class="page request"><div class="requestIntro"><p class="eyebrow">TA PROCHAINE TROUVAILLE</p><h2>Fais ta demande.</h2><p>Réponse rapide dans ton espace C‑Shop. Tes coordonnées restent privées.</p></div><form id="requestForm" novalidate><section class="formPart"><div class="partTitle"><span>01</span><div><b>Tes coordonnées</b><small>Elles restent privées et servent uniquement à te recontacter.</small></div></div><div class="grid two"><label>PRÉNOM<input name="firstName" required placeholder="Ex. Alex" autocomplete="given-name"></label><label>NOM<input name="lastName" required placeholder="Ex. Martin" autocomplete="family-name"></label></div><div class="grid two"><label>NUMÉRO DE TÉLÉPHONE<input name="phone" required type="tel" placeholder="Ex. 06 12 34 56 78" autocomplete="tel"></label><label>E‑MAIL<input name="email" required type="email" placeholder="Ex. alex@email.fr" autocomplete="email"></label></div><div class="grid"><label>VILLE<input name="city" required placeholder="Ex. Rennes" autocomplete="address-level2"></label></div></section><section class="formPart"><div class="partTitle"><span>02</span><div><b>L’article recherché</b><small>Une seule commande peut être ouverte à la fois par compte.</small></div></div><div id="articles" class="articles"><fieldset class="articleItem" data-article><legend>ARTICLE 1</legend><div class="grid"><label>ARTICLE RECHERCHÉ<input name="product" required placeholder="Ex. Nike Air Max 95"></label></div><div class="grid two"><label>TAILLE / MODÈLE<input name="size" placeholder="Ex. 42"></label><label>BUDGET MAXIMUM<input name="budget" inputmode="decimal" placeholder="Ex. 180 €"></label></div><div class="grid"><label>PHOTOS DE L’ARTICLE <small>(jusqu’à 4)</small><input class="file" name="photos" type="file" accept="image/*" multiple></label></div><div class="grid"><label>LIEN OU DÉTAIL COMPLÉMENTAIRE<textarea name="details" rows="3" placeholder="Couleur, état souhaité, lien vers l’article…"></textarea></label></div></fieldset></div><button class="addArticle" id="addArticle" type="button">+ Ajouter un article</button></section><button class="send" type="submit">Envoyer ma demande <span>↗</span></button><p id="formMessage" class="message" aria-live="polite"></p><p class="legal">Pour envoyer ta demande, clique sur « Se connecter avec Google » en haut à droite. Cela te permet aussi de retrouver tes commandes. Tes coordonnées restent privées.</p></form></section>
+    <section id="suivi" class="page workspace"><p class="eyebrow">ESPACE CLIENT</p><h2>Mes commandes</h2><p id="accountLine" class="accountLine"></p><p class="workspaceIntro">Suis tes demandes et échange avec C SHOP.FR ici. Ton numéro reste privé.</p><div id="ordersContent"></div></section>
+    <section id="administration" class="page workspace admin"><p class="eyebrow">ESPACE PRIVÉ</p><h2>Administration</h2><p class="accountLine">Gestion des demandes reçues et de leur avancement.</p><div id="adminContent"></div></section>
   </main>
-  <footer class="footer">
-    <a class="footerLogo logo" href="#accueil"><span>C</span><b>SHOP</b><i>.FR</i></a><p>Une recherche simple, une proposition claire.</p>
-    <nav aria-label="Informations"><a href="#contact">Contact</a><a href="#faq">FAQ</a><a href="#mentions-legales">Mentions légales</a><a href="#confidentialite">Politique de confidentialité</a><a class="discordLink" href="https://discord.gg/rR7a9wdtNg" target="_blank" rel="noopener noreferrer">Discord</a></nav>
-  </footer>
-  <section id="mentions-legales" class="infoSection"><h2>Mentions légales</h2><p>Les mentions légales complètes seront ajoutées avec le nom de l’éditeur, l’adresse de contact et l’hébergeur avant l’ouverture au public.</p></section>
-  <section id="confidentialite" class="infoSection"><h2>Politique de confidentialité</h2><p>C SHOP.FR utilise tes coordonnées uniquement pour traiter ta demande, te contacter et te permettre de suivre son avancement. Aucune donnée n’est revendue.</p></section>
+  <footer class="footer"><a class="footerLogo logo" href="#accueil" data-page-link="accueil"><span>C</span><b>SHOP</b><i>.FR</i></a><p>Une recherche simple, une proposition claire.</p></footer>
   <script src="/app.js"></script>
 </body>
 </html>
