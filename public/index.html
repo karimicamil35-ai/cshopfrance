@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>C SHOP.FR — Trouve ce que tu veux</title>
+  <meta name="description" content="C SHOP.FR trouve les articles que vous recherchez.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="header">
+    <a class="logo" href="#accueil" aria-label="C SHOP.FR, accueil"><span>C</span><b>SHOP</b><i>.FR</i></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <button id="ordersButton" type="button">Mes commandes</button>
+    </nav>
+    <button id="loginButton" class="login" type="button">Mon espace</button>
+  </header>
+
+  <main id="accueil">
+    <section class="hero">
+      <div class="heroCopy">
+        <p class="eyebrow">PERSONAL SHOPPING · FRANCE</p>
+        <h1>Trouve ce que<br><strong>tu veux.</strong></h1>
+        <p>Tu cherches un produit précis ? Envoie ta demande, nous le trouvons et tu suis chaque étape depuis ton espace personnel.</p>
+        <div class="actions"><a class="button orange" href="#demande">Faire une demande <span>↗</span></a><a class="button dark" href="#suivi">Voir le suivi</a></div>
+        <ul class="benefits"><li>Demande rapide</li><li>Suivi clair</li><li>Réponse personnalisée</li></ul>
+      </div>
+      <div class="visual" aria-hidden="true"><div class="orbit orbitA"></div><div class="orbit orbitB"></div><div class="monogram">C</div><div class="tag tagTop">SNEAKERS<br><b>trouvées</b></div><div class="tag tagBottom">SUIVI<br><b>en direct</b></div></div>
+    </section>
+
+    <section id="demande" class="request">
+      <div class="requestIntro">
+        <p class="eyebrow">TA PROCHAINE TROUVAILLE</p>
+        <h2>Fais ta demande.</h2>
+        <p>Réponse rapide dans ton espace C‑Shop. Tes coordonnées restent privées.</p>
+      </div>
+      <form id="requestForm" novalidate>
+        <section class="formPart"><div class="partTitle"><span>01</span><div><b>Tes coordonnées</b><small>Elles restent privées et servent uniquement à te recontacter.</small></div></div>
+          <div class="grid two"><label>PRÉNOM<input name="firstName" required placeholder="Ex. Alex" autocomplete="given-name"></label><label>NOM<input name="lastName" required placeholder="Ex. Martin" autocomplete="family-name"></label></div>
+          <div class="grid two"><label>NUMÉRO DE TÉLÉPHONE<input name="phone" required type="tel" placeholder="Ex. 06 12 34 56 78" autocomplete="tel"></label><label>E‑MAIL<input name="email" required type="email" placeholder="Ex. alex@email.fr" autocomplete="email"></label></div>
+          <div class="grid"><label>VILLE<input name="city" required placeholder="Ex. Rennes" autocomplete="address-level2"></label></div>
+        </section>
+        <section class="formPart"><div class="partTitle"><span>02</span><div><b>L’article recherché</b><small>Ajoute le maximum de détails pour que nous le trouvions.</small></div></div>
+          <div class="grid"><label>ARTICLE RECHERCHÉ<input name="product" required placeholder="Ex. Nike Air Max 95"></label></div>
+          <div class="grid two"><label>TAILLE / MODÈLE<input name="size" placeholder="Ex. 42"></label><label>BUDGET MAXIMUM<input name="budget" inputmode="decimal" placeholder="Ex. 180 €"></label></div>
+          <div class="grid"><label>PHOTOS DE L’ARTICLE <small>(jusqu’à 4)</small><input class="file" name="photos" type="file" accept="image/*" multiple></label></div>
+          <div class="grid"><label>LIEN OU DÉTAIL COMPLÉMENTAIRE<textarea name="details" rows="3" placeholder="Couleur, état souhaité, lien vers l’article…"></textarea></label></div>
+        </section>
+        <button class="send" type="submit">Envoyer ma demande <span>↗</span></button><p id="formMessage" class="message" aria-live="polite"></p>
+        <p class="legal">Ta demande est enregistrée dans cet appareil et visible dans « Mes commandes ».</p>
+      </form>
+    </section>
+
+    <section id="suivi" class="workspace hidden"><button class="close" id="closeOrders" type="button" aria-label="Fermer">×</button><p class="eyebrow">ESPACE CLIENT</p><h2>Mes commandes</h2><div id="ordersContent"></div></section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
