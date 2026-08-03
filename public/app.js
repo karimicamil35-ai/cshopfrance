@@ -42,6 +42,21 @@ function refreshArticleLabels() {
     if (remove) remove.hidden = index === 0;
   });
 }
+function makeArticle() {
+  const article = document.querySelector('[data-article]').cloneNode(true);
+  article.querySelectorAll('input, textarea').forEach(field => field.value = '');
+  const file = article.querySelector('input[type="file"]');
+  if (file) file.value = '';
+  const remove = document.createElement('button');
+  remove.type = 'button';
+  remove.className = 'removeArticle';
+  remove.textContent = 'Retirer cet article';
+  article.append(remove);
+  $('#articles').append(article);
+  refreshArticleLabels();
+  article.querySelector('[name="product"]').focus();
+}
+$('#addArticle').onclick = makeArticle;
 document.addEventListener('click', event => {
   const remove = event.target.closest('.removeArticle');
   if (!remove) return;
@@ -54,16 +69,15 @@ $('#requestForm').onsubmit = async event => {
   if (!form.reportValidity()) return;
   if (!currentUser) { $('#formMessage').textContent = 'Connecte-toi avec Google avant d’envoyer ta demande.'; return connect(); }
   const customer = Object.fromEntries(new FormData(form));
-  const article = form.querySelector('[data-article]');
-  const order = {
-    product: article.querySelector('[name="product"]').value,
-    size: article.querySelector('[name="size"]').value,
-    budget: article.querySelector('[name="budget"]').value,
-    details: article.querySelector('[name="details"]').value
-  };
+  const articles = [...form.querySelectorAll('[data-article]')].map(article => ({
+    product: article.querySelector('[name="product"]').value.trim(),
+    size: article.querySelector('[name="size"]').value.trim(),
+    budget: article.querySelector('[name="budget"]').value.trim(),
+    details: article.querySelector('[name="details"]').value.trim()
+  }));
   try {
     const result = await api('/api/orders', {
-      method: 'POST', body: JSON.stringify({ ...customer, ...order })
+      method: 'POST', body: JSON.stringify({ ...customer, articles })
     });
     $('#formMessage').textContent = `Demande n°${result.id} envoyée. Elle est maintenant visible dans « Mes commandes ».`;
     form.reset();
