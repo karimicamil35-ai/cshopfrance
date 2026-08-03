@@ -80,6 +80,8 @@ input.file{font-size:9px;padding:8px}
 .adminControls select{width:100%;appearance:none;background:#121513;border:1px solid #3a3e3a;color:#fff;padding:11px 10px;font:700 10px Manrope;cursor:pointer}
 .adminControls .updateButton{border:0;background:var(--orange);color:#121212;padding:12px;font:800 10px Manrope;cursor:pointer;transition:filter .16s ease,transform .16s ease}
 .adminControls .updateButton:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.adminControls .closeOrderButton{border:1px solid #6e3a20;background:#20140e;color:#ffd0ac;padding:11px;font:800 10px Manrope;cursor:pointer;transition:filter .16s ease,transform .16s ease}
+.adminControls .closeOrderButton:hover{filter:brightness(1.12);transform:translateY(-1px)}
 .adminChat{grid-column:1/-1;border-top:1px solid #2a2d2a;padding-top:2px}
 .chatToggle{margin-top:15px;border:1px solid #4b2513;background:#15100d;color:var(--orange);padding:10px 12px;font:800 10px Manrope;cursor:pointer}
 .chat{margin-top:15px;border-top:1px solid #2a2d2a;padding-top:14px}
