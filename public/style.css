@@ -69,6 +69,7 @@ input.file{font-size:9px;padding:8px}
 .order{padding:18px;background:#0e100f;border:1px solid #2a2d2a;border-left:3px solid var(--orange);color:var(--text);margin-top:15px;box-shadow:inset 0 1px 0 #171a18}
 .order p{color:#b7bab6;line-height:1.55;margin:8px 0 0}
 .order b,.order p{white-space:pre-line}
+.orderArticles{display:grid;gap:9px;margin-top:13px}.orderArticle{padding:12px 13px;background:#141715;border:1px solid #2a2d2a;border-radius:2px}.orderArticle strong{display:block;color:var(--orange);font-size:10px;letter-spacing:.7px;text-transform:uppercase;margin-bottom:6px}.orderArticle b{display:block;font-size:14px}.orderArticle p{font-size:12px;margin-top:6px}.orderArticle span{color:#858985;text-transform:uppercase;font-size:9px;font-weight:800;letter-spacing:.5px;margin-right:4px}.orderArticle i{color:var(--orange);font-style:normal;margin:0 5px}.orderArticle .articleDetails{color:#aeb1ad}
 .status{color:var(--orange);font-weight:800;font-size:10px;margin:0;text-transform:uppercase;letter-spacing:.7px}
 .admin{background:radial-gradient(circle at 88% 10%,#301104 0,transparent 25%),var(--black);color:var(--text);border-top:1px solid #242724}
 .admin .accountLine{color:var(--muted)}
