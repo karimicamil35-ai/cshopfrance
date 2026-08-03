@@ -3,15 +3,14 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--black);color:var(--text);font-family:Manrope,Arial,sans-serif}
-.header{height:74px;padding:0 clamp(26px,8vw,84px);display:flex;align-items:center;border-bottom:1px solid #232522;background:#080908;position:sticky;top:0;z-index:9}
-.menuButton{width:42px;height:42px;border:1px solid #2c2f2c;border-radius:50%;background:#222523;display:grid;place-content:center;gap:4px;margin-right:16px;cursor:pointer}.menuButton span{display:block;width:17px;height:2px;background:#f5f4f1}.menuButton:hover{border-color:var(--orange)}
+.header{min-height:74px;padding:12px clamp(26px,7vw,84px);display:flex;align-items:center;gap:22px;border-bottom:1px solid #232522;background:#080908;position:sticky;top:0;z-index:9}
 .logo{font-size:17px;letter-spacing:-1px;text-decoration:none;color:#fff;font-weight:800}
 .logo span{display:inline-grid;place-items:center;color:#080908;background:var(--orange);border-radius:4px;width:22px;height:22px;margin-right:3px}
 .logo i{font-style:normal;color:var(--orange);font-size:13px}
-.login{display:flex;gap:8px;align-items:center;border:0;border-radius:30px;background:#fff;padding:8px 15px;color:#151615;font:700 10px Manrope;cursor:pointer}
+.topNav{display:flex;align-items:center;gap:8px;margin-left:auto}.topNav a{border:1px solid #3a2116;border-radius:999px;background:#131513;color:#f3f2ef;padding:9px 13px;text-decoration:none;font:800 10px Manrope;white-space:nowrap;transition:.16s ease}.topNav a:hover{border-color:var(--orange);color:var(--orange)}.topNav a.active{border-color:var(--orange);background:var(--orange);color:#111}
+.login{display:flex;gap:8px;align-items:center;border:1px solid #fff;border-radius:999px;background:#fff;padding:9px 15px;color:#151615;font:700 10px Manrope;cursor:pointer;white-space:nowrap}
 .login em{font-style:normal;color:#4285f4;font-size:15px}
 .hidden{display:none!important}
-.menuOverlay{position:fixed;inset:0;background:#000a;z-index:19}.sideMenu{position:fixed;z-index:20;left:0;top:0;bottom:0;width:min(335px,90vw);padding:22px 12px;background:#25292d;border-right:1px solid #3a3f43;transform:translateX(-105%);transition:transform .22s ease;box-shadow:14px 0 45px #0007}.sideMenu.open{transform:translateX(0)}.sideMenuTop{display:flex;align-items:center;justify-content:space-between;padding:0 10px 16px;border-bottom:1px solid #3b4044}.sideMenuTop p{margin:0;color:#d8dbdc;font:700 10px 'DM Mono';letter-spacing:.8px}.sideMenuTop button{border:0;background:none;color:#fff;font-size:28px;line-height:1;cursor:pointer}.sideNav{display:grid;padding:10px 0}.sideNav a,.sideNav button{border:0;border-left:3px solid transparent;background:transparent;color:#eef0f0;text-align:left;padding:13px 12px;font:700 13px Manrope;text-decoration:none;cursor:pointer}.sideNav a span,.sideNav button span{display:inline-block;width:27px;color:#adb4b7;font-family:'DM Mono'}.sideNav a:hover,.sideNav button:hover,.sideNav a.active{background:#324c70;border-left-color:var(--orange)}.sideMenuDivider{border-top:1px solid #3b4044;margin:7px 10px}.sideNavActions button{color:#fff}.sideNavActions button:first-child{color:#ffb68f}
 .page{display:none}.page.pageActive{display:block}.hero.pageActive{display:flex}.request.pageActive{display:grid}.how.pageActive{display:grid}
 .hero{min-height:380px;padding:55px clamp(26px,8vw,84px);display:flex;position:relative;overflow:hidden;background:radial-gradient(circle at 91% 45%,#4e1c07 0%,#17110d 20%,transparent 42%)}
 .heroCopy{z-index:2;width:430px}
@@ -117,14 +116,15 @@ input.file{font-size:9px;padding:8px}
 .infoSection summary{cursor:pointer;font-size:12px;font-weight:800}
 .infoSection details p{margin:10px 0 0}
 .discord{background:linear-gradient(100deg,#1b1009,#0d0f0e)}
-@media(max-width:760px){.header{padding:14px 20px;height:auto;gap:12px}.menuButton{margin-right:2px}
+@media(max-width:900px){.header{padding:12px 20px;gap:12px;flex-wrap:wrap}.topNav{order:3;margin:0;width:100%;overflow-x:auto;padding-bottom:2px}.login{margin-left:auto}
+}
+@media(max-width:760px){
 .hero{min-height:470px}
 .visual{opacity:.35;right:-125px;top:60px}
 .request{grid-template-columns:1fr;padding:45px 25px;gap:25px}
 .request form{justify-self:stretch;margin:0;width:100%}
 .grid.two{grid-template-columns:1fr}
 .benefits{flex-wrap:wrap}
-.login{margin-left:auto}
 .how{grid-template-columns:1fr;padding:48px 25px;gap:28px}
 .how ol{grid-template-columns:1fr}
 .how li{min-height:auto}
