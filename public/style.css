@@ -71,15 +71,16 @@ input.file{font-size:9px;padding:8px}
 .admin{background:radial-gradient(circle at 88% 10%,#301104 0,transparent 25%),var(--black);color:var(--text);border-top:1px solid #242724}
 .admin .accountLine{color:var(--muted)}
 .admin .close{color:var(--text)}
-.admin .order{display:grid;grid-template-columns:minmax(0,1fr) 210px;column-gap:28px;align-items:start;background:#0e100f;border:1px solid #2a2d2a;border-left:3px solid var(--orange);color:var(--text);box-shadow:inset 0 1px 0 #171a18}
-.admin .order .status,.admin .order>b{grid-column:1}
-.admin .order p{color:#b7bab6;line-height:1.55;margin:8px 0 0}
-.admin .order .status{color:var(--orange);font-size:10px;margin:0;text-transform:uppercase;letter-spacing:.7px}
-.admin .order b{font-size:16px;margin-top:8px}
-.admin .order label{grid-column:2;grid-row:1 / span 3;color:#aaa}
-.admin .order select{width:100%;appearance:none;background:#121513;border:1px solid #3a3e3a;color:#fff;padding:11px 10px;font:700 10px Manrope;cursor:pointer}
-.admin .updateButton{grid-column:2;grid-row:4;border:0;background:var(--orange);color:#121212;padding:12px;font:800 10px Manrope;cursor:pointer;transition:filter .16s ease,transform .16s ease}
-.admin .updateButton:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.admin .order{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:18px 28px;align-items:start;background:#0e100f;border:1px solid #2a2d2a;border-left:3px solid var(--orange);color:var(--text);box-shadow:inset 0 1px 0 #171a18}
+.adminSummary p{color:#b7bab6;line-height:1.55;margin:8px 0 0}
+.adminSummary .status{color:var(--orange);font-size:10px;margin:0;text-transform:uppercase;letter-spacing:.7px}
+.adminSummary b{display:block;font-size:16px;margin-top:8px}
+.adminControls{display:grid;gap:12px}
+.adminControls label{color:#aaa}
+.adminControls select{width:100%;appearance:none;background:#121513;border:1px solid #3a3e3a;color:#fff;padding:11px 10px;font:700 10px Manrope;cursor:pointer}
+.adminControls .updateButton{border:0;background:var(--orange);color:#121212;padding:12px;font:800 10px Manrope;cursor:pointer;transition:filter .16s ease,transform .16s ease}
+.adminControls .updateButton:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.adminChat{grid-column:1/-1;border-top:1px solid #2a2d2a;padding-top:2px}
 .chatToggle{margin-top:15px;border:1px solid #4b2513;background:#15100d;color:var(--orange);padding:10px 12px;font:800 10px Manrope;cursor:pointer}
 .chat{margin-top:15px;border-top:1px solid #2a2d2a;padding-top:14px}
 .chatMessages{display:grid;gap:8px;max-height:280px;overflow:auto;padding-right:3px}
@@ -125,5 +126,5 @@ input.file{font-size:9px;padding:8px}
 .footer{align-items:flex-start;flex-direction:column;gap:16px}
 .footer nav{margin:0;gap:13px}
 .infoSection{padding:42px 25px}
-.admin .order{grid-template-columns:1fr;gap:14px}.admin .order .status,.admin .order>b{grid-column:1}.admin .order label,.admin .updateButton{grid-column:1;grid-row:auto}
+.admin .order{grid-template-columns:1fr;gap:14px}.adminChat{grid-column:1}
 }
