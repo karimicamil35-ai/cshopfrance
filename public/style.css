@@ -97,7 +97,7 @@ input.file{font-size:9px;padding:8px}
 .chatMessage{max-width:min(85%,560px);padding:10px 12px;background:#171a18;color:#d8d9d6;font-size:11px;line-height:1.5}
 .chatMessage.mine{justify-self:end;background:#3a1b0d;color:#fff}
 .chatMeta{display:block;margin-bottom:4px;color:#ff9b6c;font:700 8px 'DM Mono';letter-spacing:.5px}
-.chatForm{display:flex;gap:8px;margin-top:12px}.chatForm input{flex:1}.chatForm button{border:0;background:var(--orange);color:#151515;padding:0 14px;font:800 10px Manrope;cursor:pointer}
+.chatForm{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chatForm>input{flex:1;min-width:180px}.chatForm button,.chatFileButton{border:0;background:var(--orange);color:#151515;padding:0 14px;font:800 10px Manrope;cursor:pointer;display:grid;place-items:center}.chatFileButton{background:#19110d;color:var(--orange);border:1px solid var(--orange);padding:10px 13px}.chatFileButton input{display:none}.chatHelp{width:100%;color:#858985;font-size:9px}.chatText{display:block}.chatFile{display:block;width:max-content;max-width:100%;overflow:hidden;text-overflow:ellipsis;margin-top:8px;padding:7px 9px;border:1px solid #b94513;background:#1e120d;color:#ffb28d;text-decoration:none;font-size:10px}.chatFile small{color:#ffd2bd}
 .how{padding:72px clamp(26px,11vw,112px);display:grid;grid-template-columns:.75fr 1.7fr;gap:65px;border-top:1px solid #222522;background:#0a0c0b}
 .how h2,.infoSection h2{margin:0;font-size:clamp(30px,4vw,48px);letter-spacing:-2px}
 .how ol{padding:0;margin:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
