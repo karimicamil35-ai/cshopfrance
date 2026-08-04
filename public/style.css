@@ -3,12 +3,12 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--black);color:var(--text);font-family:Manrope,Arial,sans-serif}
-.header{min-height:74px;padding:12px clamp(26px,7vw,84px);display:flex;align-items:center;gap:22px;border-bottom:1px solid #232522;background:#080908;position:sticky;top:0;z-index:9}
+.header{min-height:76px;padding:12px clamp(18px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #2a211c;background:#080908;position:sticky;top:0;z-index:9}
 .logo{font-size:17px;letter-spacing:-1px;text-decoration:none;color:#fff;font-weight:800}
 .logo span{display:inline-grid;place-items:center;color:#080908;background:var(--orange);border-radius:4px;width:22px;height:22px;margin-right:3px}
 .logo i{font-style:normal;color:var(--orange);font-size:13px}
-.topNav{display:flex;align-items:center;gap:8px;margin-left:auto}.topNav a{border:1px solid #3a2116;border-radius:999px;background:#131513;color:#f3f2ef;padding:9px 13px;text-decoration:none;font:800 10px Manrope;white-space:nowrap;transition:.16s ease}.topNav a:hover{border-color:var(--orange);color:var(--orange)}.topNav a.active{border-color:var(--orange);background:var(--orange);color:#111}
-.login{display:flex;gap:8px;align-items:center;border:1px solid #fff;border-radius:999px;background:#fff;padding:9px 15px;color:#151615;font:700 10px Manrope;cursor:pointer;white-space:nowrap}
+.menuButton{display:flex;align-items:center;gap:6px;border:1px solid var(--orange);border-radius:999px;background:#16110d;color:var(--orange);padding:10px 15px;font:800 10px Manrope;cursor:pointer;text-transform:uppercase;letter-spacing:.5px}.menuButton span{width:12px;height:1px;background:var(--orange);display:block}.menuButton span+span{margin-left:-18px;transform:translateY(4px)}.menuButton span+span+span{transform:translateY(8px)}
+.menuOverlay{position:fixed;inset:0;background:#000b;z-index:19;backdrop-filter:blur(2px)}.siteMenu{position:fixed;z-index:20;top:0;left:0;width:min(355px,90vw);height:100vh;padding:20px;display:flex;flex-direction:column;background:#080908;border-right:1px solid var(--orange);box-shadow:18px 0 48px #0008;transform:translateX(-105%);transition:transform .24s ease}.siteMenu.open{transform:translateX(0)}.menuTop{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #322018}.closeMenu{width:34px;height:34px;display:grid;place-items:center;border:1px solid #49301f;border-radius:50%;background:#15100d;color:var(--orange);font-size:24px;line-height:1;cursor:pointer}.menuLabel{margin:27px 0 12px;color:#9a664c;font:700 9px 'DM Mono';letter-spacing:1.5px}.menuLinks{display:grid;gap:10px}.menuLinks a{display:flex;align-items:center;justify-content:space-between;min-height:46px;padding:0 18px;border:1px solid #5b301c;border-radius:999px;background:#120f0c;color:#f4f2ee;font:800 11px Manrope;text-decoration:none;transition:.16s}.menuLinks a:after{content:'↗';color:var(--orange);font-size:16px}.menuLinks a:hover{transform:translateX(3px);border-color:#ff8249}.menuLinks a.active{background:var(--orange);border-color:var(--orange);color:#111}.menuLinks a.active:after{color:#111}.menuBottom{margin-top:auto;padding-top:20px;border-top:1px solid #322018}.menuBottom p{color:#858783;font-size:10px;line-height:1.5;margin:0 0 12px}.login{width:100%;display:flex;justify-content:center;gap:8px;align-items:center;border:1px solid var(--orange);border-radius:999px;background:#19110d;padding:12px 15px;color:var(--orange);font:800 10px Manrope;cursor:pointer;white-space:nowrap}
 .login em{font-style:normal;color:#4285f4;font-size:15px}
 .hidden{display:none!important}
 .page{display:none}.page.pageActive{display:block}.hero.pageActive{display:flex}.request.pageActive{display:grid}.how.pageActive{display:grid}
@@ -116,8 +116,7 @@ input.file{font-size:9px;padding:8px}
 .infoSection summary{cursor:pointer;font-size:12px;font-weight:800}
 .infoSection details p{margin:10px 0 0}
 .discord{background:linear-gradient(100deg,#1b1009,#0d0f0e)}
-@media(max-width:900px){.header{padding:12px 20px;gap:12px;flex-wrap:wrap}.topNav{order:3;margin:0;width:100%;overflow-x:auto;padding-bottom:2px}.login{margin-left:auto}
-}
+@media(max-width:1050px){.header{padding:12px 20px;gap:12px}}
 @media(max-width:760px){
 .hero{min-height:470px}
 .visual{opacity:.35;right:-125px;top:60px}

@@ -11,14 +11,20 @@
 <body>
   <header class="header">
     <a class="logo" href="/?page=accueil" aria-label="C SHOP.FR, accueil"><span>C</span><b>SHOP</b><i>.FR</i></a>
-    <nav class="topNav" aria-label="Navigation principale">
-      <a href="/?page=accueil" data-nav-page="accueil">Accueil</a>
+    <button id="menuButton" class="menuButton" type="button" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span> Menu</button>
+  </header>
+  <div id="menuOverlay" class="menuOverlay hidden"></div>
+  <aside id="siteMenu" class="siteMenu" aria-label="Menu de navigation" aria-hidden="true">
+    <div class="menuTop"><a class="logo" href="/?page=accueil"><span>C</span><b>SHOP</b><i>.FR</i></a><button id="closeMenu" class="closeMenu" type="button" aria-label="Fermer le menu">×</button></div>
+    <p class="menuLabel">NAVIGATION</p>
+    <nav class="menuLinks">
+      <a href="/" data-nav-page="accueil">Accueil</a>
       <a href="/?page=demande" data-nav-page="demande">Faire une commande</a>
       <a href="/?page=suivi" data-nav-page="suivi">Mes commandes</a>
       <a href="/?page=administration" data-nav-page="administration" id="adminNavLink" class="hidden">Administration</a>
     </nav>
-    <button id="loginButton" class="login" type="button">Se connecter avec Google</button>
-  </header>
+    <div class="menuBottom"><p>Ton espace personnel est protégé.</p><button id="loginButton" class="login" type="button">Se connecter avec Google</button></div>
+  </aside>
 
   <main>
     <section id="accueil" class="page hero pageActive">
