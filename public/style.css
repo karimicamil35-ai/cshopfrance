@@ -23,9 +23,13 @@ main > .request.pageActive{display:grid!important}
 .hero h1 strong{color:var(--orange)}
 .heroCopy>p:not(.eyebrow),.requestIntro>p{font-size:12px;line-height:1.65;color:#aeb0ad;max-width:355px;margin:23px 0}
 .actions{display:flex;gap:12px}
-.button{font-size:10px;font-weight:800;text-decoration:none;padding:13px 17px;display:inline-flex;gap:12px;align-items:center}
-.orange{color:#111;background:var(--orange)}
-.dark{color:#fff;background:#131513;border:1px solid #292c29}
+.button{position:relative;isolation:isolate;overflow:hidden;font-size:10px;font-weight:800;text-decoration:none;padding:13px 17px;display:inline-flex;gap:12px;align-items:center;cursor:pointer;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,color .22s ease,border-color .22s ease}
+.button::before{content:'';position:absolute;z-index:-1;inset:0;background:var(--orange);transform:translateX(-104%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.button:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 9px 25px #ff5a0a55}
+.button:hover::before{transform:translateX(0)}
+.orange{color:#111;background:var(--orange);border:1px solid var(--orange)}
+.orange::before{background:#fff3ec}.orange:hover{color:#111;box-shadow:0 10px 27px #ff5a0a77}
+.dark{color:#fff;background:#131513;border:1px solid #292c29}.dark:hover{color:#111;border-color:var(--orange)}
 .benefits{display:flex;gap:17px;padding:0;margin:23px 0;list-style:none;color:#828581;font-size:9px}
 .benefits li:before{content:'✓';color:var(--orange);margin-right:4px}
 .visual{position:absolute;right:9%;top:16px;width:360px;height:350px}
@@ -101,17 +105,18 @@ input.file{font-size:9px;padding:8px}
 .how{padding:72px clamp(26px,11vw,112px);display:grid;grid-template-columns:.75fr 1.7fr;gap:65px;border-top:1px solid #222522;background:#0a0c0b}
 .how h2,.infoSection h2{margin:0;font-size:clamp(30px,4vw,48px);letter-spacing:-2px}
 .how ol{padding:0;margin:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.how li{min-height:155px;padding:17px;border:1px solid #292c29;background:#101210}
-.how li span{display:block;color:var(--orange);font:10px 'DM Mono';margin-bottom:29px}
-.how li b{font-size:12px}
-.how li p{margin:7px 0 0;color:#8e918e;font-size:10px;line-height:1.55}
+.how li{min-height:155px;padding:17px;border:1px solid #292c29;background:#101210;cursor:default;transition:transform .24s cubic-bezier(.2,.8,.2,1),background .24s ease,border-color .24s ease,box-shadow .24s ease}
+.how li span{display:block;color:var(--orange);font:10px 'DM Mono';margin-bottom:29px;transition:color .24s ease}
+.how li b{font-size:12px;transition:color .24s ease}
+.how li p{margin:7px 0 0;color:#8e918e;font-size:10px;line-height:1.55;transition:color .24s ease}
+.how li:hover{transform:translateY(-8px) scale(1.02);background:var(--orange);border-color:#ff9b6b;box-shadow:0 15px 30px #ff5a0a4a}
+.how li:hover span,.how li:hover b,.how li:hover p{color:#111}
 .footer{display:flex;align-items:center;gap:30px;padding:28px clamp(26px,8vw,84px);border-top:1px solid #292c29;background:#080908}
 .footerLogo{flex:none}
 .footer p{color:#878a87;font-size:10px;margin:0}
 .footer nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:18px}
-.footer a{color:#b8bab7;font:700 9px Manrope;text-decoration:none}
-.footer a:hover{color:var(--orange)}
-.footer .discordLink{color:var(--orange)}
+.footer a{color:#b8bab7;font:700 9px Manrope;text-decoration:none;transition:color .2s ease,transform .2s ease}
+.footer a:hover{color:var(--orange);transform:translateY(-2px)}
 .infoSection{padding:55px clamp(26px,12vw,120px);border-top:1px solid #272a27;background:#0d0f0e}
 .infoSection h2{margin-bottom:15px}
 .infoSection p{max-width:610px;color:#aaa;line-height:1.7;font-size:12px}
@@ -119,7 +124,6 @@ input.file{font-size:9px;padding:8px}
 .infoSection details:last-child{border-bottom:1px solid #2b2e2b}
 .infoSection summary{cursor:pointer;font-size:12px;font-weight:800}
 .infoSection details p{margin:10px 0 0}
-.discord{background:linear-gradient(100deg,#1b1009,#0d0f0e)}
 @media(max-width:1050px){.header{padding:12px 20px;gap:12px}}
 @media(max-width:760px){
 .hero{min-height:470px}

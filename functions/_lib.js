@@ -1,4 +1,4 @@
-const STATUS={new:'Demande reçue',product_to_pay:'Produit à payer',product_paid:'Produit payé',shipping_to_pay:'Livraison à payer',shipped:'Colis expédié',receipt_confirmation:'Réception à confirmer',closed:'Terminée'};
+const STATUS={new:'Demande reçue',product_to_pay:'Produit à payer',product_paid:'Produit payé',shipping_to_pay:'Produit payé',shipped:'Colis expédié',receipt_confirmation:'Réception à confirmer',closed:'Terminée',archived:'Terminée'};
 export function json(data,status=200){return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json;charset=UTF-8'}})}
 export function cookie(name,value,maxAge){return `${name}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`}
 export function readCookie(request,name){const v=request.headers.get('cookie')||'';return v.split(';').map(x=>x.trim()).find(x=>x.startsWith(name+'='))?.slice(name.length+1)}
