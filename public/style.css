@@ -23,9 +23,11 @@ main > .request.pageActive{display:grid!important}
 .hero h1 strong{color:var(--orange)}
 .heroCopy>p:not(.eyebrow),.requestIntro>p{font-size:12px;line-height:1.65;color:#aeb0ad;max-width:355px;margin:23px 0}
 .actions{display:flex;gap:12px}
-.button{position:relative;isolation:isolate;overflow:hidden;font-size:10px;font-weight:800;text-decoration:none;padding:13px 17px;display:inline-flex;gap:12px;align-items:center;cursor:pointer;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,color .22s ease,border-color .22s ease}
+.button{position:relative;isolation:isolate;overflow:visible;font-size:10px;font-weight:800;text-decoration:none;padding:13px 17px;display:inline-flex;gap:12px;align-items:center;cursor:pointer;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,color .22s ease,border-color .22s ease}
 .button::before{content:'';position:absolute;z-index:-1;inset:0;background:var(--orange);transform:translateX(-104%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.button::after{content:'';pointer-events:none;position:absolute;z-index:-2;inset:-18px;border-radius:inherit;background:radial-gradient(ellipse at 50% 55%,#159cffb5 0%,#168cff5c 35%,transparent 72%);filter:blur(11px);opacity:0;transform:scale(.78);transition:opacity .28s ease,transform .42s cubic-bezier(.2,.8,.2,1)}
 .button:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 9px 25px #ff5a0a55}
+.button:hover::after{opacity:1;transform:scale(1.12);animation:blueGlow 1.35s ease-in-out infinite alternate}
 .button:hover::before{transform:translateX(0)}
 .orange{color:#111;background:var(--orange);border:1px solid var(--orange)}
 .orange::before{background:#fff3ec}.orange:hover{color:#111;box-shadow:0 10px 27px #ff5a0a77}
@@ -109,8 +111,13 @@ input.file{font-size:9px;padding:8px}
 .how li span{display:block;color:var(--orange);font:10px 'DM Mono';margin-bottom:29px;transition:color .24s ease}
 .how li b{font-size:12px;transition:color .24s ease}
 .how li p{margin:7px 0 0;color:#8e918e;font-size:10px;line-height:1.55;transition:color .24s ease}
+.how li{position:relative;isolation:isolate}
+.how li::after{content:'';pointer-events:none;position:absolute;z-index:-1;inset:-19px;background:radial-gradient(ellipse at 50% 60%,#168cff98 0%,#168cff3d 38%,transparent 72%);filter:blur(13px);opacity:0;transform:scale(.82);transition:opacity .28s ease,transform .42s cubic-bezier(.2,.8,.2,1)}
 .how li:hover{transform:translateY(-8px) scale(1.02);background:var(--orange);border-color:#ff9b6b;box-shadow:0 15px 30px #ff5a0a4a}
+.how li:hover::after{opacity:1;transform:scale(1.12);animation:blueGlow 1.35s ease-in-out infinite alternate}
 .how li:hover span,.how li:hover b,.how li:hover p{color:#111}
+.menuToggle:hover,.menuNav button:hover,.login:hover,.send:hover,.addArticle:hover,.removeArticle:hover,.chatToggle:hover,.reviewButton:hover,.chatForm button:hover,.chatFileButton:hover,.adminControls button:hover{box-shadow:0 0 0 1px #168cff8c,0 0 18px #168cff91,0 0 38px #168cff52}
+@keyframes blueGlow{from{filter:blur(11px) brightness(.92)}to{filter:blur(15px) brightness(1.32)}}
 .footer{display:flex;align-items:center;gap:30px;padding:28px clamp(26px,8vw,84px);border-top:1px solid #292c29;background:#080908}
 .footerLogo{flex:none}
 .footer p{color:#878a87;font-size:10px;margin:0}
