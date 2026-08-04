@@ -11,7 +11,11 @@ body{margin:0;background:var(--black);color:var(--text);font-family:Manrope,Aria
 .login{display:flex;gap:8px;align-items:center;border:1px solid var(--orange);border-radius:999px;background:#19110d;padding:10px 15px;color:var(--orange);font:800 10px Manrope;cursor:pointer;white-space:nowrap}
 .login em{font-style:normal;color:#4285f4;font-size:15px}
 .hidden{display:none!important}
-.page{display:none}.page.pageActive{display:block}.request.pageActive{display:grid}
+/* Une seule page peut être visible à la fois. Ces règles priment même si le navigateur
+   avait conservé une ancienne feuille de style dans son cache. */
+main > .page{display:none!important}
+main > .page.pageActive{display:block!important}
+main > .request.pageActive{display:grid!important}
 .hero{min-height:380px;padding:55px clamp(26px,8vw,84px);display:flex;position:relative;overflow:hidden;background:radial-gradient(circle at 91% 45%,#4e1c07 0%,#17110d 20%,transparent 42%)}
 .heroCopy{z-index:2;width:430px}
 .eyebrow{margin:0 0 13px;color:var(--orange);font:700 9px 'DM Mono',monospace;letter-spacing:1.6px}
