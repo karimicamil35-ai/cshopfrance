@@ -11,19 +11,18 @@
 <body>
   <header class="header">
     <a class="logo" href="/?page=accueil" aria-label="C SHOP.FR, accueil"><span>C</span><b>SHOP</b><i>.FR</i></a>
-    <button id="menuButton" class="menuButton" type="button" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span> Menu</button>
+    <button id="menuToggle" class="menuToggle" type="button" aria-expanded="false" aria-controls="sideMenu">Menu <span>☰</span></button>
   </header>
-  <div id="menuOverlay" class="menuOverlay hidden"></div>
-  <aside id="siteMenu" class="siteMenu" aria-label="Menu de navigation" aria-hidden="true">
-    <div class="menuTop"><a class="logo" href="/?page=accueil"><span>C</span><b>SHOP</b><i>.FR</i></a><button id="closeMenu" class="closeMenu" type="button" aria-label="Fermer le menu">×</button></div>
-    <p class="menuLabel">NAVIGATION</p>
-    <nav class="menuLinks">
-      <a href="/" data-nav-page="accueil">Accueil</a>
-      <a href="/?page=demande" data-nav-page="demande">Faire une commande</a>
-      <a href="/?page=suivi" data-nav-page="suivi">Mes commandes</a>
-      <a href="/?page=administration" data-nav-page="administration" id="adminNavLink" class="hidden">Administration</a>
+  <div id="menuOverlay" class="menuOverlay" hidden></div>
+  <aside id="sideMenu" class="sideMenu" aria-label="Navigation" aria-hidden="true">
+    <div class="menuHeading"><span>MENU</span><button id="menuClose" type="button" aria-label="Fermer le menu">×</button></div>
+    <nav class="menuNav" aria-label="Navigation principale">
+      <button type="button" data-nav-page="accueil">Accueil</button>
+      <button type="button" data-nav-page="demande">Faire une commande</button>
+      <button type="button" data-nav-page="suivi">Mes commandes</button>
+      <button type="button" data-nav-page="administration" id="adminNavLink" class="hidden">Administration</button>
     </nav>
-    <div class="menuBottom"><p>Ton espace personnel est protégé.</p><button id="loginButton" class="login" type="button">Se connecter avec Google</button></div>
+    <div class="menuLogin"><p>Connecte-toi pour envoyer et suivre tes commandes.</p><button id="loginButton" class="login" type="button">Se connecter avec Google</button></div>
   </aside>
 
   <main>
