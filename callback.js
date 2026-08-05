@@ -1,0 +1,13 @@
+name = "cshopfrance"
+compatibility_date = "2026-08-02"
+main = ".worker/index.js"
+
+[assets]
+directory = "public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cshopfrance-commandes"
+database_id = "b1b09492-0f27-4deb-9d5b-ceb92288a9b5"
