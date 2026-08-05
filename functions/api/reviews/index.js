@@ -1,4 +1,4 @@
-import {json} from '../../../_lib.js';
+import {json} from '../../_lib.js';
 
 export async function onRequestGet({env}) {
   try {
