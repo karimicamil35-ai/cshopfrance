@@ -118,6 +118,8 @@ input.file{font-size:9px;padding:8px}
 .how li:hover{transform:translateY(-8px) scale(1.02);background:var(--orange);border-color:#ff9b6b;box-shadow:0 15px 30px #ff5a0a4a}
 .how li:hover::after{opacity:1;transform:scale(1.12);animation:colorGlow 1.35s ease-in-out infinite alternate}
 .how li:hover span,.how li:hover b,.how li:hover p{color:#111}
+.productIdeas{padding:68px clamp(26px,8vw,84px);border-top:1px solid #222522;background:#090b0a}
+.productIdeasHeading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.productIdeasHeading h2{margin:0;font-size:clamp(30px,4vw,48px);letter-spacing:-2px}.productIdeasHeading>p:not(.eyebrow){margin:0 0 5px;color:#858985;font-size:9px;font-style:italic}.productGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}.productCard{overflow:hidden;border:1px solid #292c29;background:#101210;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}.productCard:hover{transform:translateY(-5px);border-color:#a43c13;box-shadow:0 10px 25px #ff5a0a24}.productCard img{display:block;width:100%;height:154px;object-fit:cover;background:#ececea}.productCard>div{padding:13px}.productCard h3{margin:0;color:#f5f4f1;font-size:11px;line-height:1.35}.productCard p{margin:0}.productPrice{margin-top:7px!important;color:var(--orange);font:800 11px Manrope}.productColors{margin-top:5px!important;color:#90938f;font-size:8px;line-height:1.4}
 .menuToggle:hover,.menuNav button:hover,.login:hover,.send:hover,.addArticle:hover,.removeArticle:hover,.chatToggle:hover,.reviewButton:hover,.chatForm button:hover,.chatFileButton:hover,.adminControls button:hover{box-shadow:0 0 0 1px #ff5a0a8c,0 0 18px #ff5a0a91,0 0 38px #ff5a0a52}
 @keyframes colorGlow{from{filter:blur(11px) brightness(.92)}to{filter:blur(15px) brightness(1.32)}}
 .footer{display:flex;align-items:center;gap:30px;padding:28px clamp(26px,8vw,84px);border-top:1px solid #292c29;background:#080908}
@@ -145,6 +147,7 @@ input.file{font-size:9px;padding:8px}
 .how ol{grid-template-columns:1fr}
 .how li{min-height:auto}
 .how li span{margin-bottom:13px}
+.productIdeas{padding:48px 25px}.productIdeasHeading{display:block;margin-bottom:22px}.productIdeasHeading>p:not(.eyebrow){margin-top:9px}.productGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.productCard img{height:140px}.productCard>div{padding:11px}
 .footer{align-items:flex-start;flex-direction:column;gap:16px}
 .footer nav{margin:0;gap:13px}
 .infoSection{padding:42px 25px}
