@@ -15,13 +15,13 @@
   </header>
   <div id="menuOverlay" class="menuOverlay" hidden></div>
   <aside id="sideMenu" class="sideMenu" aria-label="Navigation" aria-hidden="true">
-    <div class="menuHeading"><span>MENU</span><span class="neonCart" aria-hidden="true">🛒</span><button id="menuClose" type="button" aria-label="Fermer le menu">×</button></div>
+    <div class="menuHeading"><span>MENU</span><button id="menuClose" type="button" aria-label="Fermer le menu">×</button></div>
     <nav class="menuNav" aria-label="Navigation principale">
-      <button type="button" data-nav-page="accueil">Accueil</button>
-      <button type="button" data-nav-page="demande">Faire une commande</button>
-      <button type="button" data-nav-page="suivi">Mes commandes</button>
-      <button type="button" data-nav-page="avis">Les avis</button>
-      <button type="button" data-nav-page="administration" id="adminNavLink" class="hidden">Administration</button>
+      <button type="button" data-nav-page="accueil"><span>Accueil</span><i class="navIcon" aria-hidden="true">⌂</i></button>
+      <button type="button" data-nav-page="demande"><span>Faire une commande</span><i class="navIcon" aria-hidden="true">◇</i></button>
+      <button type="button" data-nav-page="suivi"><span>Mes commandes</span><i class="navIcon cartIcon" aria-hidden="true">🛒</i></button>
+      <button type="button" data-nav-page="avis"><span>Les avis</span><i class="navIcon" aria-hidden="true">★</i></button>
+      <button type="button" data-nav-page="administration" id="adminNavLink" class="hidden"><span>Administration</span><i class="navIcon" aria-hidden="true">⚙</i></button>
     </nav>
     <div class="menuLogin"><p>Connecte-toi pour envoyer et suivre tes commandes.</p><button id="loginButton" class="login" type="button">Se connecter avec Google</button></div>
   </aside>
