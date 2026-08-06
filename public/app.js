@@ -7,7 +7,36 @@ function articlesMarkup(order) { const products = splitOrderField(order.product)
 function pageFromUrl() { const page = new URLSearchParams(location.search).get('page'); return ['demande', 'suivi', 'avis', 'administration'].includes(page) ? page : 'accueil'; }
 function closeMenu() { document.body.classList.remove('menuOpen'); $('#menuToggle').setAttribute('aria-expanded', 'false'); $('#sideMenu').setAttribute('aria-hidden', 'true'); $('#menuOverlay').hidden = true; }
 function openMenu() { document.body.classList.add('menuOpen'); $('#menuToggle').setAttribute('aria-expanded', 'true'); $('#sideMenu').setAttribute('aria-hidden', 'false'); $('#menuOverlay').hidden = false; }
-function showPage(pageId, updateUrl = true) { const currentPage = ['demande', 'suivi', 'avis', 'administration'].includes(pageId) ? pageId : 'accueil'; document.querySelectorAll('.page').forEach(section => section.classList.toggle('pageActive', section.id === currentPage)); document.querySelectorAll('[data-nav-page]').forEach(link => link.classList.toggle('active', link.dataset.navPage === currentPage)); if (updateUrl) history.replaceState(null, '', currentPage === 'accueil' ? '/' : `/?page=${currentPage}`); closeMenu(); window.scrollTo({ top: 0, behavior: 'auto' }); }
+function showPage(pageId, updateUrl = true) {
+  const currentPage = ['demande', 'suivi', 'avis', 'administration'].includes(pageId)
+    ? pageId
+    : 'accueil';
+
+  document.querySelectorAll('.page').forEach(section => {
+    const active = section.id === currentPage;
+
+    section.classList.toggle('pageActive', active);
+    section.hidden = !active;
+    section.style.display = active
+      ? (currentPage === 'demande' ? 'grid' : 'block')
+      : 'none';
+  });
+
+  document.querySelectorAll('[data-nav-page]').forEach(link => {
+    link.classList.toggle('active', link.dataset.navPage === currentPage);
+  });
+
+  if (updateUrl) {
+    history.replaceState(
+      null,
+      '',
+      currentPage === 'accueil' ? '/' : `/?page=${currentPage}`,
+    );
+  }
+
+  closeMenu();
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
 
 function orderCard(order) { const date = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(order.created_at)); const review = order.status === 'receipt_confirmation' ? `<button class="reviewButton" data-review="${order.id}">Confirmer la réception & laisser un avis</button>` : ''; return `<article class="order"><p class="status">${escapeHtml(order.status_label)}</p>${articlesMarkup(order)}<p class="orderDate">Envoyée le ${date}</p><button class="chatToggle" data-chat="${order.id}">Discuter avec C SHOP.FR</button><div class="chat hidden" id="chat-${order.id}"></div>${review}</article>`; }
 async function refreshUser() { const data = await api('/api/auth/me', { headers: {} }); currentUser = data.user; $('#loginButton').textContent = currentUser ? `${currentUser.name} · Déconnexion` : 'Se connecter avec Google'; const email = $('#requestForm input[name="email"]'); if (currentUser) { email.value = currentUser.email; email.readOnly = true; } else email.readOnly = false; $('#adminNavLink').classList.toggle('hidden', !currentUser?.admin); return currentUser; }
