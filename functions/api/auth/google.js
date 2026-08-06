@@ -1,4 +1,4 @@
-import { origin } from '../../_lib.js';
+import { origin } from '../_lib.js';
 
 const ALLOWED_DESTINATIONS = new Set([
   'suivi',
