@@ -1,4 +1,4 @@
-import { cookie, makeSession, origin, readCookie } from '../../_lib.js';
+import { cookie, makeSession, origin, readCookie } from '../../../_lib.js';
 
 export async function onRequestGet({ request, env }) {
   const incoming = new URL(request.url);
