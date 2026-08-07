@@ -1,0 +1,25 @@
+C-SHOP.FR — ACTIVATION DES E-MAILS AUTOMATIQUES
+
+Le code est déjà prêt pour envoyer un e-mail à CHAQUE étape :
+Demande reçue → Recherche → Proposition → Commandée → Expédiée → Livrée → Terminée.
+Un e-mail séparé est aussi envoyé quand le paiement est confirmé.
+
+Le service utilisé est Resend via son API HTTPS.
+
+1) Créer/configurer le compte Resend et vérifier le domaine qui servira à envoyer les e-mails.
+2) Dans Cloudflare, ajouter le secret : RESEND_API_KEY
+   Exemple avec Wrangler :
+   npx wrangler secret put RESEND_API_KEY
+
+3) Ajouter la variable EMAIL_FROM dans Cloudflare, par exemple :
+   C-Shop.fr <commandes@VOTRE-DOMAINE.fr>
+
+Ne pas mettre une adresse Gmail comme EMAIL_FROM : le domaine d'envoi doit être autorisé/vérifié par le fournisseur d'e-mails.
+
+4) Avant de déployer cette version sur une base existante, exécuter UNE FOIS :
+   npx wrangler d1 execute cshopfrance-commandes --remote --file=./migration-20260807.sql
+
+5) Déployer ensuite le site normalement.
+
+Si RESEND_API_KEY ou EMAIL_FROM manque, la commande et le changement d'étape fonctionneront quand même,
+mais l'administration affichera que l'e-mail n'a pas pu être envoyé et l'échec sera enregistré dans l'historique.

@@ -1,52 +1,6 @@
+-- Migration C-Shop.fr du 07/08/2026
+-- À exécuter UNE FOIS sur la base D1 déjà en production.
 PRAGMA foreign_keys = ON;
-
-CREATE TABLE IF NOT EXISTS orders (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  customer_email TEXT NOT NULL,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  phone TEXT NOT NULL,
-  city TEXT NOT NULL,
-  product TEXT NOT NULL,
-  size TEXT,
-  budget TEXT,
-  details TEXT,
-  status TEXT NOT NULL DEFAULT 'new',
-  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at TEXT,
-  receipt_due_at TEXT,
-  review_rating INTEGER,
-  review_comment TEXT,
-  reviewed_at TEXT
-);
-
-CREATE INDEX IF NOT EXISTS idx_orders_customer_email ON orders(customer_email, id DESC);
-CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status, id DESC);
-
-CREATE TABLE IF NOT EXISTS order_messages (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  order_id INTEGER NOT NULL,
-  author_email TEXT NOT NULL,
-  author_role TEXT NOT NULL CHECK (author_role IN ('customer', 'admin')),
-  message TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (order_id) REFERENCES orders(id)
-);
-CREATE INDEX IF NOT EXISTS idx_order_messages_order_id ON order_messages(order_id, id);
-
-CREATE TABLE IF NOT EXISTS order_message_files (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  order_id INTEGER NOT NULL,
-  message_id INTEGER NOT NULL,
-  file_name TEXT NOT NULL,
-  content_type TEXT NOT NULL,
-  size_bytes INTEGER NOT NULL,
-  data BLOB NOT NULL,
-  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (order_id) REFERENCES orders(id),
-  FOREIGN KEY (message_id) REFERENCES order_messages(id)
-);
-CREATE INDEX IF NOT EXISTS idx_order_message_files_order_id ON order_message_files(order_id, id);
 
 CREATE TABLE IF NOT EXISTS clients (
   email TEXT PRIMARY KEY COLLATE NOCASE,
@@ -105,3 +59,33 @@ CREATE TABLE IF NOT EXISTS email_notifications (
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX IF NOT EXISTS idx_email_notifications_order ON email_notifications(order_id, id DESC);
+
+CREATE TABLE IF NOT EXISTS order_message_files (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  order_id INTEGER NOT NULL,
+  message_id INTEGER NOT NULL,
+  file_name TEXT NOT NULL,
+  content_type TEXT NOT NULL,
+  size_bytes INTEGER NOT NULL,
+  data BLOB NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (order_id) REFERENCES orders(id),
+  FOREIGN KEY (message_id) REFERENCES order_messages(id)
+);
+CREATE INDEX IF NOT EXISTS idx_order_message_files_order_id ON order_message_files(order_id, id);
+
+-- Convertit les anciens statuts vers la nouvelle timeline.
+UPDATE orders SET status='proposal' WHERE status='product_to_pay';
+UPDATE orders SET status='ordered' WHERE status IN ('product_paid','shipping_to_pay');
+UPDATE orders SET status='delivered' WHERE status='receipt_confirmation';
+
+-- Les anciennes commandes archivées restent terminées mais sont masquées du tableau principal.
+INSERT OR IGNORE INTO order_archive(order_id, archived_by, archived_at)
+SELECT id, 'migration', COALESCE(updated_at, created_at) FROM orders WHERE status='archived';
+UPDATE orders SET status='closed' WHERE status='archived';
+
+-- Conserve les anciens clients déjà présents dans les commandes.
+INSERT OR IGNORE INTO clients(email, name, first_seen_at, last_seen_at)
+SELECT customer_email, trim(first_name || ' ' || last_name), MIN(created_at), MAX(COALESCE(updated_at, created_at))
+FROM orders
+GROUP BY lower(customer_email);
