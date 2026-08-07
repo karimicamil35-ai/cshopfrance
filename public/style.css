@@ -126,6 +126,74 @@ input.file{font-size:9px;padding:8px}
 .infoSection summary{cursor:pointer;font-size:12px;font-weight:800}
 .infoSection details p{margin:10px 0 0}
 
+
+
+/* Titres en néon sur tout le site */
+.hero h1,
+.requestIntro h2,
+.reviewsIntro h2,
+.workspace h2,
+.how h2,
+.productIdeasHeading h2,
+.infoSection h2,
+.productCard h3,
+.partTitle b,
+.reviewTop b,
+.how li b,
+.menuNav button b,
+.orderCardTitle,
+.adminSummary b{
+  color:#ff965d;
+  text-shadow:
+    0 0 6px rgba(255,90,10,.35),
+    0 0 14px rgba(255,90,10,.28),
+    0 0 26px rgba(255,90,10,.16);
+}
+
+.hero h1,
+.requestIntro h2,
+.reviewsIntro h2,
+.workspace h2,
+.how h2,
+.productIdeasHeading h2,
+.infoSection h2{
+  background:linear-gradient(110deg,#ffd2b8 0%,#ff9f6c 26%,#ff5a0a 62%,#ffb690 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero h1 strong,
+.productCard h3,
+.menuNav button b,
+.partTitle b,
+.reviewTop b,
+.how li b,
+.orderCardTitle,
+.adminSummary b{
+  color:#fff4ed;
+}
+
+.productCard h3,
+.menuNav button b,
+.partTitle b,
+.reviewTop b,
+.how li b,
+.orderCardTitle,
+.adminSummary b{
+  text-shadow:
+    0 0 5px rgba(255,90,10,.25),
+    0 0 11px rgba(255,90,10,.18);
+}
+
+.menuNav button.active b,
+.menuNav button:hover b{
+  color:#ffd8c3;
+  text-shadow:
+    0 0 6px rgba(255,90,10,.42),
+    0 0 15px rgba(255,90,10,.28);
+}
+
 /* Animations légères : révélation des sections + glow discret. */
 .revealSection{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1)}
 .revealSection.isVisible{opacity:1;transform:translateY(0)}
