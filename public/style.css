@@ -222,3 +222,102 @@ input.file{font-size:9px;padding:8px}
 }
 
 @media(max-width:520px){.how ol{grid-template-columns:1fr}.menuNav button{padding:11px 9px}.sideMenu{padding-left:18px;padding-right:18px}}
+
+
+/* =========================================================
+   C-SHOP PRO — NOIR + ORANGE
+   Cartes premium, timeline, avis accueil, footer, loader,
+   scroll fluide, boutons reflet et mobile optimisé.
+   ========================================================= */
+:root{--orange:#ff5a0a;--orange2:#ff7a2f;--orangeSoft:#ff9b67;--black:#050605;--panel:#0b0d0c;--panel2:#101310;--edge:#2b211b}
+body{background:#050605;background-image:radial-gradient(circle at 82% 8%,rgba(255,90,10,.07),transparent 25%)}
+.header{background:rgba(5,6,5,.91);backdrop-filter:blur(16px);border-bottom-color:#2c1b12;box-shadow:0 10px 36px #0008}
+.logo span{box-shadow:0 0 16px rgba(255,90,10,.42)}
+
+/* Titres : cœur lumineux orange et halo contrôlé. */
+.hero h1,.requestIntro h2,.reviewsIntro h2,.workspace h2,.how h2,.productIdeasHeading h2,.homeReviews h2,.infoSection h2{
+  background:linear-gradient(105deg,#ffd4bd 0%,#ff9d67 25%,#ff5a0a 58%,#ff7b37 82%,#ffd0b6 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 12px rgba(255,90,10,.18),0 0 30px rgba(255,90,10,.10)
+}
+
+/* Animations au scroll : discrètes, sans 3D. */
+.revealSection{opacity:0;transform:translateY(20px);transition:opacity .58s ease,transform .58s cubic-bezier(.2,.75,.2,1)}
+.revealSection.isVisible{opacity:1;transform:translateY(0)}
+
+/* Reflet premium des boutons. */
+.button,.premiumAction,.send,.chatToggle,.reviewButton,.updateButton,.closeOrderButton{
+  position:relative;overflow:hidden;isolation:isolate;background-image:linear-gradient(110deg,transparent 0 39%,rgba(255,255,255,.22) 48%,transparent 57%);background-size:260% 100%;background-position:170% 0;transition:background-position .55s ease,transform .2s ease,box-shadow .2s ease,filter .2s ease
+}
+.button::before{display:none}
+.button:hover,.premiumAction:hover,.send:hover,.chatToggle:hover,.reviewButton:hover,.updateButton:hover,.closeOrderButton:hover{background-position:-65% 0;transform:translateY(-2px);box-shadow:0 10px 28px #0009,0 0 22px rgba(255,90,10,.20)}
+.compactButton{padding:11px 14px;font-size:9px;border-radius:8px}
+
+/* Produits : vraies images du site, pas de couleurs artificielles. */
+.productIdeas{padding:72px clamp(26px,8vw,96px);border-top:1px solid #211b17;background:linear-gradient(180deg,#080a09 0%,#060706 100%)}
+.productIdeasHeading{align-items:flex-end}
+.productIdeasHeading>div .eyebrow{margin-bottom:8px}
+.productGrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.productCard{position:relative;border-radius:14px;background:linear-gradient(180deg,#111411,#0b0d0c);border:1px solid #2a2e2a;box-shadow:0 12px 34px #0006;overflow:hidden}
+.productCard:hover,.productCard:focus-visible{transform:translateY(-5px);border-color:#8f3b18;box-shadow:0 18px 42px #000a,0 0 25px rgba(255,90,10,.13)}
+.productMedia{position:relative;overflow:hidden;background:#0a0b0a;padding:0!important}
+.productCard .productMedia img{height:190px;width:100%;object-fit:cover;transition:transform .34s cubic-bezier(.2,.8,.2,1),filter .34s ease}
+.productCard:hover .productMedia img,.productCard:focus-visible .productMedia img{transform:scale(1.035);filter:brightness(.82)}
+.productCta{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:39px;padding:10px 12px;border:1px solid #ff6a20;background:rgba(8,9,8,.92);backdrop-filter:blur(8px);color:#fff;font:800 9px Manrope;letter-spacing:.15px;opacity:0;transform:translateY(9px);transition:opacity .24s ease,transform .24s ease,box-shadow .24s ease;box-shadow:0 0 22px rgba(255,90,10,.12)}
+.productCta i{color:var(--orange);font-style:normal;font-size:13px}
+.productCard:hover .productCta,.productCard:focus-visible .productCta{opacity:1;transform:translateY(0)}
+.productBody{padding:15px!important}
+.productCard h3{font-size:12px!important;line-height:1.35;margin:0 0 13px!important;color:#fff4ec!important;text-shadow:0 0 9px rgba(255,90,10,.22)}
+.productPriceRow{display:flex;align-items:end;justify-content:space-between;gap:8px;padding-top:11px;border-top:1px solid #2a2d2a}
+.productPriceRow span{color:#747974;font:700 7px 'DM Mono';letter-spacing:.7px;text-transform:uppercase}
+.productPriceRow b{color:#ff762e;font-size:13px;text-shadow:0 0 10px rgba(255,90,10,.22);white-space:nowrap}
+
+/* Avis réels sur l'accueil. */
+.homeReviews{padding:72px clamp(26px,8vw,96px);border-top:1px solid #211b17;background:radial-gradient(circle at 84% 20%,rgba(255,90,10,.10),transparent 26%),#080a09}
+.homeReviewsHeading{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;margin-bottom:26px}
+.homeReviewsHeading h2{margin:0;font-size:clamp(30px,4vw,48px);letter-spacing:-2px}
+.homeReviewsGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.homeReviewCard{min-height:205px;padding:20px;border:1px solid #30251e;border-radius:14px;background:linear-gradient(145deg,#111310,#0b0d0c);box-shadow:0 14px 34px #0006;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.homeReviewCard:hover{transform:translateY(-3px);border-color:#743318;box-shadow:0 16px 36px #0009,0 0 18px rgba(255,90,10,.10)}
+.homeReviewStars{margin:0 0 17px;color:#ff721f;font-size:16px;letter-spacing:2px;text-shadow:0 0 11px rgba(255,90,10,.30)}
+.homeReviewText{margin:0;color:#dedfdb;font-size:12px;line-height:1.72}
+.homeReviewMeta{display:flex;align-items:center;gap:10px;margin-top:22px;padding-top:14px;border-top:1px solid #292c29}
+.homeReviewMeta b{display:block;color:#fff;font-size:10px}.homeReviewMeta small{display:block;margin-top:2px;color:#777b77;font-size:8px}
+.homeReviewsEmpty{grid-column:1/-1;margin:0;padding:24px;border:1px dashed #412517;border-radius:12px;color:#8f928e;font-size:11px}
+
+/* Mes commandes : timeline verticale claire. */
+#ordersContent{width:min(100%,900px);margin-top:28px}
+.customerOrder{padding:0!important;overflow:hidden;border-radius:16px!important;border:1px solid #31251e!important;border-left:1px solid #31251e!important;background:linear-gradient(145deg,#0f120f,#090b0a)!important;box-shadow:0 20px 55px #0008!important}
+.orderHeader{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;border-bottom:1px solid #28211c;background:linear-gradient(90deg,rgba(255,90,10,.07),transparent 45%)}
+.orderHeader small{color:#6f746f;font:700 7px 'DM Mono';letter-spacing:1.5px}.orderHeader h3{margin:4px 0 0;color:#fff;font-size:17px;text-shadow:0 0 11px rgba(255,90,10,.22)}
+.orderHeader .orderDate{margin:5px 0 0;color:#747874;font-size:9px}.statusPill{flex:none;padding:8px 10px;border:1px solid #673019;border-radius:999px;background:#1d100b;color:#ff8b4d;font:800 8px 'DM Mono';letter-spacing:.5px;text-transform:uppercase;box-shadow:0 0 17px rgba(255,90,10,.11)}
+.customerOrder>.orderArticles{margin:0;padding:18px 22px;border-bottom:1px solid #28211c;background:#0b0d0c}.customerOrder .orderArticle{border-radius:9px;background:#101310}
+.timelinePanel{padding:20px 22px 23px}.timelineKicker{margin:0 0 17px!important;color:#ff7b38!important;font:800 8px 'DM Mono';letter-spacing:1.2px}
+.orderTimeline{list-style:none;margin:0;padding:0;display:grid}.timelineStep{position:relative;display:grid;grid-template-columns:35px 1fr;gap:12px;min-height:65px;padding-bottom:12px;opacity:.42}.timelineStep::after{content:'';position:absolute;left:16px;top:32px;bottom:-3px;width:1px;background:#313531}.timelineStep:last-child::after{display:none}.timelineDot{position:relative;z-index:1;display:grid;place-items:center;width:33px;height:33px;border-radius:50%;border:1px solid #3c413d;background:#0b0d0c;color:#707570;font:700 8px 'DM Mono';transition:.2s ease}.timelineStep b{display:block;padding-top:2px;color:#b2b5b1;font-size:11px}.timelineStep p{margin:5px 0 0!important;color:#696e69!important;font-size:9px!important}.timelineStep.done,.timelineStep.active{opacity:1}.timelineStep.done .timelineDot{border-color:#ff6a21;background:#ff5a0a;color:#111;box-shadow:0 0 14px rgba(255,90,10,.24)}.timelineStep.done::after{background:linear-gradient(#ff5a0a,#74401f)}.timelineStep.done b{color:#f3f4f0}.timelineStep.active .timelineDot{border-color:#ff6a21;color:#ff8c51;box-shadow:0 0 0 4px rgba(255,90,10,.08),0 0 18px rgba(255,90,10,.20)}.timelineStep.active b{color:#ff9a66;text-shadow:0 0 9px rgba(255,90,10,.25)}
+.orderActions{display:flex;flex-wrap:wrap;gap:9px;padding:0 22px 22px}.orderActions .chatToggle,.orderActions .reviewButton{margin:0;min-height:43px;border-radius:9px}.orderActions .chatToggle{border-color:#6a3119;background-color:#17100c}.orderActions .reviewButton{background-color:var(--orange)}
+.customerOrder>.chat{margin:0 22px 22px}
+
+/* Envoi : loader puis confirmation. */
+.send{min-height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:13px;box-shadow:0 9px 27px rgba(255,90,10,.18)}
+.send:disabled{cursor:wait;filter:saturate(.85)}.send.isLoading .sendArrow{display:none}.send.isLoading::after{content:'';width:15px;height:15px;border-radius:50%;border:2px solid #54230d;border-top-color:#111;animation:spin .72s linear infinite}.send.isSuccess{background-color:#ff6a20}.send.isSuccess .sendArrow{font-size:15px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.message{min-height:0;margin:11px 0 0}.sendingMessage,.successMessage,.message.isError{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:9px}.sendingMessage{border:1px solid #4a2b1c;background:#130e0b;color:#d0a88f}.successMessage{border:1px solid #7b3719;background:#1a100b;color:#ffd2bb}.successMessage b{display:block;color:#ff945e;font-size:10px}.successMessage small{display:block;margin-top:3px;color:#9a7c6c;font-size:8px}.successCheck{display:grid;place-items:center;flex:none;width:27px;height:27px;border-radius:50%;background:#ff5a0a;color:#111;font-size:14px;font-weight:900;box-shadow:0 0 16px rgba(255,90,10,.27)}.inlineLoader{flex:none;width:15px;height:15px;border-radius:50%;border:2px solid #4c2a19;border-top-color:#ff6b22;animation:spin .72s linear infinite}.message.isError{border:1px solid #6c2b21;background:#1b0e0b;color:#ff9b81}
+
+/* Footer plus professionnel. */
+.proFooter{display:grid;grid-template-columns:1.35fr .75fr .75fr 1fr;align-items:start;gap:34px;padding:48px clamp(26px,8vw,84px) 0;border-top:1px solid #342218;background:radial-gradient(circle at 8% 15%,rgba(255,90,10,.08),transparent 28%),#050605}
+.footerBrand p{margin:14px 0 5px;max-width:250px;color:#b4b7b3;font-size:10px;line-height:1.55}.footerBrand small{color:#636763;font-size:8px}.footerColumn{display:grid!important;gap:9px!important;margin:0!important}.footerColumn b,.footerContact>b{color:#ff8e53;font:800 8px 'DM Mono';letter-spacing:1.1px;text-transform:uppercase}.footerColumn button{border:0;background:transparent;color:#a9aca8;padding:0;text-align:left;font:600 9px Manrope;cursor:pointer;transition:color .18s ease,transform .18s ease}.footerColumn button:hover{color:#ff7c39;transform:translateX(3px)}.footerContact p{margin:11px 0 14px;max-width:220px;color:#818581;font-size:9px;line-height:1.55}.footerBottom{grid-column:1/-1;display:flex;justify-content:space-between;gap:15px;margin-top:5px;padding:17px 0 22px;border-top:1px solid #211b17;color:#565a56;font:700 7px 'DM Mono';letter-spacing:.5px}
+
+/* Responsive mobile : 2 produits/ligne, boutons tactiles et formulaires lisibles. */
+@media(max-width:900px){.productGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.homeReviewsGrid{grid-template-columns:1fr 1fr}.proFooter{grid-template-columns:1fr 1fr}.footerBrand,.footerBottom{grid-column:1/-1}}
+@media(max-width:760px){
+  .header{min-height:64px}.menuToggle,.login{min-height:44px}.sideMenu{width:min(360px,94vw)}.menuNav button{min-height:54px}
+  .hero{padding:43px 24px}.hero h1{font-size:clamp(43px,14vw,61px)}.actions{display:grid;grid-template-columns:1fr;max-width:330px}.actions .button{justify-content:center;min-height:46px}
+  .productIdeas,.homeReviews{padding:48px 20px}.productIdeasHeading,.homeReviewsHeading{display:block}.productIdeasHeading>p{margin-top:9px}.homeReviewsHeading .button{margin-top:17px}
+  .productGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.productCard .productMedia img{height:132px}.productBody{padding:12px!important}.productCard h3{font-size:10px!important;margin-bottom:10px!important}.productPriceRow{display:block}.productPriceRow b{display:block;margin-top:5px;font-size:11px}.productCta{left:8px;right:8px;bottom:8px;min-height:35px;padding:8px;font-size:7.5px}
+  .homeReviewsGrid{grid-template-columns:1fr}.homeReviewCard{min-height:0}
+  .request{padding:42px 20px}.request form{padding:16px}.requestIntro h2{font-size:44px}input,textarea{font-size:16px!important;min-height:44px}.file{font-size:13px!important}.send{min-height:49px;font-size:11px}
+  .workspace,.reviewsPage{padding:48px 20px}.workspace h2,.reviewsIntro h2{font-size:40px}.orderHeader{padding:17px 16px;align-items:flex-start}.statusPill{font-size:7px}.customerOrder>.orderArticles,.timelinePanel{padding-left:16px;padding-right:16px}.orderActions{padding:0 16px 18px}.orderActions>*{width:100%}.timelineStep{grid-template-columns:32px 1fr;gap:10px}.timelineDot{width:30px;height:30px}.timelineStep::after{left:14px;top:29px}.timelineStep b{font-size:10px}
+  .proFooter{grid-template-columns:1fr;gap:24px;padding:38px 20px 0}.footerBrand,.footerBottom{grid-column:1}.footerColumn button{min-height:32px;font-size:10px}.footerBottom{display:grid;gap:5px}
+}
+@media(max-width:380px){.productCard .productMedia img{height:112px}.productCta{font-size:7px}.productPriceRow span{font-size:6px}.productPriceRow b{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.productCard .productMedia img,.productCta,.button,.premiumAction,.send{transition:none!important}.send.isLoading::after,.inlineLoader{animation:none}}
