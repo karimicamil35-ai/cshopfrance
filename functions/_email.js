@@ -19,16 +19,84 @@ async function logEmail(env,{orderId,email,type,subject,success,providerId='',er
   try{await env.DB.prepare('INSERT INTO email_notifications(order_id,customer_email,notification_type,subject,provider_id,success,error_text) VALUES(?,?,?,?,?,?,?)').bind(orderId,email,type,subject,providerId,success?1:0,String(error||'').slice(0,900)).run();}catch{}
 }
 
+function bytesToBase64Url(bytes){
+  let binary='';
+  const chunk=0x8000;
+  for(let i=0;i<bytes.length;i+=chunk){
+    binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));
+  }
+  return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+
+function utf8Base64(value){
+  const bytes=new TextEncoder().encode(String(value??''));
+  let binary='';
+  const chunk=0x8000;
+  for(let i=0;i<bytes.length;i+=chunk){
+    binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));
+  }
+  return btoa(binary);
+}
+
+function encodeHeader(value){
+  return `=?UTF-8?B?${utf8Base64(value)}?=`;
+}
+
+async function getGmailAccessToken(env){
+  if(!env.GMAIL_CLIENT_ID||!env.GMAIL_CLIENT_SECRET||!env.GMAIL_REFRESH_TOKEN){
+    throw new Error('Gmail non configuré : ajoute GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET et GMAIL_REFRESH_TOKEN.');
+  }
+  const body=new URLSearchParams({
+    client_id:env.GMAIL_CLIENT_ID,
+    client_secret:env.GMAIL_CLIENT_SECRET,
+    refresh_token:env.GMAIL_REFRESH_TOKEN,
+    grant_type:'refresh_token',
+  });
+  const response=await fetch('https://oauth2.googleapis.com/token',{
+    method:'POST',
+    headers:{'content-type':'application/x-www-form-urlencoded'},
+    body:body.toString(),
+  });
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok||!data.access_token){
+    throw new Error(data?.error_description||data?.error||`Google OAuth HTTP ${response.status}`);
+  }
+  return data.access_token;
+}
+
+function buildRawMessage({from,to,subject,html}){
+  const mime=[
+    `From: ${from}`,
+    `To: ${to}`,
+    `Subject: ${encodeHeader(subject)}`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/html; charset=UTF-8',
+    'Content-Transfer-Encoding: 8bit',
+    '',
+    html,
+  ].join('\r\n');
+  return bytesToBase64Url(new TextEncoder().encode(mime));
+}
+
 export async function sendEmail(env,{to,subject,html,orderId,type}){
-  if(!env.RESEND_API_KEY||!env.EMAIL_FROM){
-    const error='E-mail non configuré : ajoute RESEND_API_KEY et EMAIL_FROM.';
+  if(!env.EMAIL_FROM||!env.GMAIL_CLIENT_ID||!env.GMAIL_CLIENT_SECRET||!env.GMAIL_REFRESH_TOKEN){
+    const error='E-mail non configuré : ajoute EMAIL_FROM, GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET et GMAIL_REFRESH_TOKEN.';
     await logEmail(env,{orderId,email:to,type,subject,success:false,error});
     return {sent:false,error,configurationMissing:true};
   }
   try{
-    const response=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'content-type':'application/json','authorization':`Bearer ${env.RESEND_API_KEY}`},body:JSON.stringify({from:env.EMAIL_FROM,to:[to],subject,html})});
+    const accessToken=await getGmailAccessToken(env);
+    const raw=buildRawMessage({from:env.EMAIL_FROM,to,subject,html});
+    const response=await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json',
+        'authorization':`Bearer ${accessToken}`,
+      },
+      body:JSON.stringify({raw}),
+    });
     const data=await response.json().catch(()=>({}));
-    if(!response.ok)throw new Error(data?.message||`Resend HTTP ${response.status}`);
+    if(!response.ok)throw new Error(data?.error?.message||`Gmail API HTTP ${response.status}`);
     await logEmail(env,{orderId,email:to,type,subject,success:true,providerId:data?.id||''});
     return {sent:true,id:data?.id||null};
   }catch(error){
